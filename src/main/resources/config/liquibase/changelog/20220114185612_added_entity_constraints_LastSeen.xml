@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity LastSeen.
+    -->
+    <changeSet id="20220114185612-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="address_id"
+                                 baseTableName="last_seen"
+                                 constraintName="fk_last_seen__address_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="address"/>
+
+        <addForeignKeyConstraint baseColumnNames="child_id"
+                                 baseTableName="last_seen"
+                                 constraintName="fk_last_seen__child_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="child"/>
+    </changeSet>
+</databaseChangeLog>

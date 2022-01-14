@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Child.
+    -->
+    <changeSet id="20220114185609-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="address_id"
+                                 baseTableName="child"
+                                 constraintName="fk_child__address_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="address"/>
+
+        <addForeignKeyConstraint baseColumnNames="description_id"
+                                 baseTableName="child"
+                                 constraintName="fk_child__description_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="description"/>
+
+        <addForeignKeyConstraint baseColumnNames="contact_information_id"
+                                 baseTableName="child"
+                                 constraintName="fk_child__contact_information_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contact_information"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="child"
+                                 constraintName="fk_child__user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+    </changeSet>
+</databaseChangeLog>

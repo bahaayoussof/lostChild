@@ -1,0 +1,27 @@
+{
+  "lostChildApp": {
+    "contactInformation": {
+      "home": {
+        "title": "Contact Informations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Contact Information",
+        "createOrEditLabel": "Create or edit a Contact Information",
+        "notFound": "No Contact Informations found"
+      },
+      "created": "A new Contact Information is created with identifier {{ param }}",
+      "updated": "A Contact Information is updated with identifier {{ param }}",
+      "deleted": "A Contact Information is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Contact Information {{ id }}?"
+      },
+      "detail": {
+        "title": "Contact Information"
+      },
+      "id": "ID",
+      "name": "Name",
+      "email": "Email",
+      "phoneNumber": "Phone Number",
+      "child": "Child"
+    }
+  }
+}

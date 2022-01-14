@@ -1,0 +1,26 @@
+{
+  "lostChildApp": {
+    "lastSeen": {
+      "home": {
+        "title": "Last Seens",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Last Seen",
+        "createOrEditLabel": "Create or edit a Last Seen",
+        "notFound": "No Last Seens found"
+      },
+      "created": "A new Last Seen is created with identifier {{ param }}",
+      "updated": "A Last Seen is updated with identifier {{ param }}",
+      "deleted": "A Last Seen is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Last Seen {{ id }}?"
+      },
+      "detail": {
+        "title": "Last Seen"
+      },
+      "id": "ID",
+      "date": "Date",
+      "address": "Address",
+      "child": "Child"
+    }
+  }
+}

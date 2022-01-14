@@ -40,6 +40,8 @@
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
     "languages": ["en", "ar-ly"],
-    "enableGradleEnterprise": false
+    "enableGradleEnterprise": false,
+    "entities": ["Child", "Description", "Address", "LastSeen", "ContactInformation"],
+    "lastLiquibaseTimestamp": 1642186573000
   }
 }

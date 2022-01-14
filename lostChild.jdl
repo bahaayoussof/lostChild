@@ -1,0 +1,57 @@
+entity Child {
+	image ImageBlob 
+    name String required minlength(3) maxlength(50)
+    age Integer required min(1) max(18)
+    gender Gender required
+    birthdate LocalDate required
+    status Status required
+    agency String minlength(3) maxlength(5)
+}
+
+enum Gender {
+	Male, Female
+}
+
+enum Status {
+	Open, Close
+}
+
+entity Description {
+    eyeColor String required
+    hairColor String required
+    weight Integer required
+    height Integer required
+}
+
+entity Address {
+	street String required
+	city String required
+    state String
+    country String
+}
+
+entity LastSeen {
+    date LocalDate required
+}
+
+entity ContactInformation {
+	name String required minlength(3) maxlength(20)
+    email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+    phoneNumber Integer required min(3) max(11)
+}
+
+relationship OneToOne {
+	Child to Address
+    Child to Description
+    Child to ContactInformation
+    LastSeen to Address
+}
+
+relationship ManyToOne {
+	LastSeen to Child
+	Child to User
+}
+
+paginate Child with infinite-scroll
+
+dto * with mapstruct
