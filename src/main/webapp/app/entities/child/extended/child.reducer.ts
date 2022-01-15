@@ -17,7 +17,7 @@ const initialState: EntityState<IChild> = {
   updateSuccess: false,
 };
 
-const apiUrl = 'api/children';
+const apiUrl = 'api/v1/children-extended';
 
 // Actions
 

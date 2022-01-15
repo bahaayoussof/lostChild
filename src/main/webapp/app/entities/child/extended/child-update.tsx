@@ -81,9 +81,12 @@ export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
   }, [updateSuccess]);
 
   const saveEntity = values => {
+    const imageContentType = 'image/.*';
     const entity = {
       ...childEntity,
       ...values,
+      image,
+      imageContentType,
       address: addresses.find(it => it.id.toString() === values.address.toString()),
       description: descriptions.find(it => it.id.toString() === values.description.toString()),
       contactInformation: contactInformations.find(it => it.id.toString() === values.contactInformation.toString()),

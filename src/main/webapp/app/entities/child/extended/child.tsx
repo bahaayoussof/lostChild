@@ -138,32 +138,38 @@ export const Child = (props: RouteComponentProps<{ url: string }>) => {
                         <Col xs={9}>
                           <div className="grid-card-header">
                             <p className="child-name">
-                              <label>{child.name}</label>
+                              <h6>{child.name}</h6>
                             </p>
                             <p>
                               <label>Birthdate:</label>
-                              {child.birthdate ? <TextFormat type="date" value={child.birthdate} format={APP_DATE_FORMAT} /> : null} (
-                              {child.age} Years)
+                              {child.birthdate ? <TextFormat type="date" value={child.birthdate} format={APP_DATE_FORMAT} /> : null}
+                            </p>
+                            <p>
+                              <label>Age:</label>
+                              {child.age} Years
                             </p>
                           </div>
                         </Col>
                       </Row>
                       <hr />
                       <Row>
-                        <Col xs={6}>
+                        <Col xs={7}>
                           <div className="address-details">
                             <p>
                               <label>Country:</label>
+                              {child.address ? child.address.country : ''}
                             </p>
                             <p>
                               <label>State:</label>
+                              {child.address ? child.address.state : ''}
                             </p>
                             <p>
                               <label>City:</label>
+                              {child.address ? child.address.city : ''}
                             </p>
                           </div>
                         </Col>
-                        <Col xs={6}>
+                        <Col xs={5}>
                           <div>
                             <p>
                               <label>Gender:</label>
