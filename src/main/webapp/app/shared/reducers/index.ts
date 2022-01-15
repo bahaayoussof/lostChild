@@ -12,7 +12,7 @@ import password from 'app/modules/account/password/password.reducer';
 import settings from 'app/modules/account/settings/settings.reducer';
 import passwordReset from 'app/modules/account/password-reset/password-reset.reducer';
 // prettier-ignore
-import child from 'app/entities/child/child.reducer';
+import child from 'app/entities/child/extended/child.reducer';
 // prettier-ignore
 import description from 'app/entities/description/description.reducer';
 // prettier-ignore

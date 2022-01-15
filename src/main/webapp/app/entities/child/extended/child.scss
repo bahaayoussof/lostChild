@@ -1,0 +1,141 @@
+// Child
+.grid-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 7px;
+  margin: 10px 0;
+  margin-left: auto;
+  margin-right: auto;
+  height: 275px;
+  min-width: 310px;
+  max-width: 400px;
+  padding: 18px 12px 18px 7px;
+  font-size: 0.8rem;
+  line-height: 12px;
+  word-break: break-all;
+  label {
+    color: #0092a0;
+    margin-right: 5px;
+  }
+  .grid-card-image {
+    img,
+    svg {
+      height: 70px;
+      width: 70px;
+      object-fit: contain;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 50%;
+      vertical-align: middle;
+      border-style: none;
+    }
+  }
+  .grid-card-header {
+    margin-top: 1rem;
+    .child-name {
+      font-weight: bold;
+    }
+    margin-inline-start: 2rem;
+  }
+  hr {
+    font-weight: bold;
+  }
+  .grid-card-btns {
+    margin-top: 0.7rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .grid-card-btn {
+    margin: 0 2px;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    font-size: 0.8rem;
+  }
+}
+
+// Child Details
+.child-details {
+  .details-container {
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    .child-name {
+      color: #0092a0;
+      font-weight: bolder;
+      padding: 0.5rem;
+    }
+    label {
+      font-weight: bold;
+      color: #0092a0;
+      margin-right: 5px;
+    }
+    .missing {
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+      text-align: center;
+      padding: 1rem;
+      background-color: #c81414;
+      font-size: 50px;
+      color: #fff;
+      font-weight: bolder;
+    }
+    .image-container {
+      background: #525252;
+      width: auto;
+      margin-bottom: 1rem;
+    }
+    img {
+      background-color: #f0f8ff;
+      width: 250px;
+      height: 250px;
+      justify-content: center;
+      margin: auto;
+      display: block;
+      object-fit: contain;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    }
+    .child-info {
+      padding-left: 1rem;
+    }
+    .details-btns {
+      margin-top: 2rem;
+    }
+  }
+}
+
+// Child Update || Child Edit
+.add-edit-child {
+  .child-info {
+    padding: 1rem;
+    box-shadow: 0 2px 2px 0 rgba(3, 70, 77, 0.466);
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+  }
+  .image-preview {
+    width: 300px;
+    height: 200px;
+    margin: auto;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    object-fit: contain;
+    border-radius: 0.5rem;
+  }
+  .image-upload {
+    margin-top: 7px;
+    border: none;
+  }
+  .child-contact-status {
+    margin-top: 0.7rem;
+    padding: 1rem;
+    box-shadow: 0 2px 2px 0 rgba(3, 70, 77, 0.466);
+  }
+  .child-address-description {
+    margin-top: 0.7rem;
+    padding: 1rem;
+    box-shadow: 0 2px 2px 0 rgba(3, 70, 77, 0.466);
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+  .child-details-buttons {
+    margin-top: 1rem;
+    padding: 0;
+  }
+}

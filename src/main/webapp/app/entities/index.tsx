@@ -4,7 +4,7 @@ import { Switch } from 'react-router-dom';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
 
-import Child from './child';
+import Child from './child/extended';
 import Description from './description';
 import Address from './address';
 import LastSeen from './last-seen';
