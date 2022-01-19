@@ -20,6 +20,7 @@ import { useAppDispatch, useAppSelector } from 'app/config/store';
 import { Gender } from 'app/shared/model/enumerations/gender.model';
 import { Status } from 'app/shared/model/enumerations/status.model';
 import { useForm } from 'react-hook-form';
+import ChildLastSeen from './child-last-seen';
 /* eslint-disable no-console */
 
 export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
@@ -59,6 +60,12 @@ export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
     }
   };
 
+  let lastSeens = [];
+  const handleLastSeens = lseen => {
+    lastSeens = [...lastSeens, lseen];
+    console.log('🚀 ~ file: child-update.tsx ~ line 66 ~ ChildUpdate ~ lastSeens', lastSeens);
+  };
+
   const handleClose = () => {
     props.history.push('/child');
   };
@@ -87,10 +94,11 @@ export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
       ...values,
       image,
       imageContentType,
-      address: addresses.find(it => it.id.toString() === values.address.toString()),
-      description: descriptions.find(it => it.id.toString() === values.description.toString()),
-      contactInformation: contactInformations.find(it => it.id.toString() === values.contactInformation.toString()),
-      user: users.find(it => it.id.toString() === values.user.toString()),
+      lastSeens,
+      // address: addresses.find(it => it.id.toString() === values.address.toString()),
+      // description: descriptions.find(it => it.id.toString() === values.description.toString()),
+      // contactInformation: contactInformations.find(it => it.id.toString() === values.contactInformation.toString()),
+      // user: users.find(it => it.id.toString() === values.user.toString()),
     };
 
     if (isNew) {
@@ -107,17 +115,18 @@ export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
           gender: 'Male',
           status: 'Open',
           ...childEntity,
-          address: childEntity?.address?.id,
-          description: childEntity?.description?.id,
-          contactInformation: childEntity?.contactInformation?.id,
-          user: childEntity?.user?.id,
+          img: childEntity?.image,
+          address: childEntity?.address,
+          description: childEntity?.description,
+          contactInformation: childEntity?.contactInformation,
+          lastSeens: childEntity?.lastSeens,
         };
 
   const {
     handleSubmit,
     register,
     formState: { errors, touchedFields },
-  } = useForm({ defaultValues: defaultValues(), mode: 'onTouched' });
+  } = useForm({ defaultValues: defaultValues(), mode: 'onTouched', shouldUseNativeValidation: true });
 
   return (
     <div className="add-edit-child">
@@ -135,6 +144,7 @@ export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
           ) : (
             <Form onSubmit={handleSubmit(saveEntity)}>
               <Row className="child-info">
+                <h5 className="header">Child Information</h5>
                 <Col md={6}>
                   <ValidatedField
                     label={translate('lostChildApp.child.name')}
@@ -188,26 +198,6 @@ export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
                     }}
                     register={register}
                   />
-                </Col>
-                <Col md={6}>
-                  {!isNew ? (
-                    <ValidatedField
-                      name="id"
-                      required
-                      readOnly
-                      id="child-id"
-                      label={translate('global.field.id')}
-                      validate={{ required: true }}
-                    />
-                  ) : null}
-                  <label>
-                    Image <input type="file" onChange={onImageChange} className="image-upload form-control" />
-                  </label>
-                  {img && <img src={img} alt="preview image" className="image-preview" />}
-                </Col>
-              </Row>
-              <Row className="child-contact-status">
-                <Col md={6}>
                   <ValidatedField
                     label={translate('lostChildApp.child.status')}
                     id="child-status"
@@ -236,6 +226,82 @@ export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
                   />
                 </Col>
                 <Col md={6}>
+                  {!isNew ? (
+                    <ValidatedField
+                      name="id"
+                      required
+                      readOnly
+                      id="child-id"
+                      label={translate('global.field.id')}
+                      validate={{ required: true }}
+                      register={register}
+                    />
+                  ) : null}
+                  <div>
+                    <label>Image</label>
+                    <input
+                      type="file"
+                      onChange={e => onImageChange(e)}
+                      className="image-upload form-control"
+                      id="child-image"
+                      name="image"
+                      data-cy="image"
+                      accept="image/.*"
+                    />
+                    {img ? <img className="image-preview" src={img} alt={childEntity.name} /> : null}
+                  </div>
+                </Col>
+              </Row>
+              <Row className="child-contact-info">
+                <h5 className="header">Contact Information</h5>
+                <Col md={6}>
+                  <ValidatedField
+                    label={translate('lostChildApp.contactInformation.name')}
+                    id="contact-information-name"
+                    name="contactInformation.name"
+                    data-cy="name"
+                    type="text"
+                    validate={{
+                      required: { value: true, message: translate('entity.validation.required') },
+                      minLength: { value: 3, message: translate('entity.validation.minlength', { min: 3 }) },
+                      maxLength: { value: 20, message: translate('entity.validation.maxlength', { max: 20 }) },
+                    }}
+                    register={register}
+                  />
+                </Col>
+                <Col md={6}>
+                  <ValidatedField
+                    label={translate('lostChildApp.contactInformation.phoneNumber')}
+                    id="contact-information-phoneNumber"
+                    name="contactInformation.phoneNumber"
+                    data-cy="phoneNumber"
+                    type="text"
+                    validate={{
+                      required: { value: true, message: translate('entity.validation.required') },
+                      min: { value: 3, message: translate('entity.validation.min', { min: 3 }) },
+                      max: { value: 11, message: translate('entity.validation.max', { max: 11 }) },
+                      validate: v => isNumber(v) || translate('entity.validation.number'),
+                    }}
+                    register={register}
+                  />
+                </Col>
+                <ValidatedField
+                  label={translate('lostChildApp.contactInformation.email')}
+                  placeholder="name@doman.com"
+                  id="contact-information-email"
+                  name="contactInformation.email"
+                  data-cy="email"
+                  type="text"
+                  validate={{
+                    required: { value: true, message: translate('entity.validation.required') },
+                    pattern: {
+                      value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
+                      message: translate('entity.validation.pattern', { pattern: 'name@doman.com' }),
+                    },
+                  }}
+                  register={register}
+                />
+                {/* <Col md={6}>
                   <ValidatedField
                     id="child-user"
                     name="user"
@@ -253,64 +319,102 @@ export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
                         ))
                       : null}
                   </ValidatedField>
-                  <ValidatedField
-                    id="child-contactInformation"
-                    name="contactInformation"
-                    data-cy="contactInformation"
-                    label={translate('lostChildApp.child.contactInformation')}
-                    type="select"
-                    register={register}
-                  >
-                    <option value="" key="0" />
-                    {contactInformations
-                      ? contactInformations.map(otherEntity => (
-                          <option value={otherEntity.id} key={otherEntity.id}>
-                            {otherEntity.id}
-                          </option>
-                        ))
-                      : null}
-                  </ValidatedField>
-                </Col>
+                </Col> */}
               </Row>
               <Row className="child-address-description">
                 <Col md={6}>
+                  <h5 className="header">Address</h5>
                   <ValidatedField
-                    id="child-address"
-                    name="address"
-                    data-cy="address"
-                    label={translate('lostChildApp.child.address')}
-                    type="select"
+                    label={translate('lostChildApp.address.street')}
+                    id="address-street"
+                    name="address.street"
+                    data-cy="street"
+                    type="text"
+                    validate={{
+                      required: { value: true, message: translate('entity.validation.required') },
+                    }}
                     register={register}
-                  >
-                    <option value="" key="0" />
-                    {addresses
-                      ? addresses.map(otherEntity => (
-                          <option value={otherEntity.id} key={otherEntity.id}>
-                            {otherEntity.id}
-                          </option>
-                        ))
-                      : null}
-                  </ValidatedField>
+                  />
+                  <ValidatedField
+                    label={translate('lostChildApp.address.city')}
+                    id="address-city"
+                    name="address.city"
+                    data-cy="city"
+                    type="text"
+                    validate={{
+                      required: { value: true, message: translate('entity.validation.required') },
+                    }}
+                    register={register}
+                  />
+                  <ValidatedField
+                    label={translate('lostChildApp.address.state')}
+                    id="address-state"
+                    name="address.state"
+                    data-cy="state"
+                    type="text"
+                    register={register}
+                  />
+                  <ValidatedField
+                    label={translate('lostChildApp.address.country')}
+                    id="address-country"
+                    name="address.country"
+                    data-cy="country"
+                    type="text"
+                    register={register}
+                  />
                 </Col>
                 <Col md={6}>
+                  <h5 className="header">Description</h5>
                   <ValidatedField
-                    id="child-description"
-                    name="description"
-                    data-cy="description"
-                    label={translate('lostChildApp.child.description')}
-                    type="select"
+                    label={translate('lostChildApp.description.eyeColor')}
+                    id="description-eyeColor"
+                    name="description.eyeColor"
+                    data-cy="eyeColor"
+                    type="text"
+                    validate={{
+                      required: { value: true, message: translate('entity.validation.required') },
+                    }}
                     register={register}
-                  >
-                    <option value="" key="0" />
-                    {descriptions
-                      ? descriptions.map(otherEntity => (
-                          <option value={otherEntity.id} key={otherEntity.id}>
-                            {otherEntity.id}
-                          </option>
-                        ))
-                      : null}
-                  </ValidatedField>
+                  />
+                  <ValidatedField
+                    label={translate('lostChildApp.description.hairColor')}
+                    id="description-hairColor"
+                    name="description.hairColor"
+                    data-cy="hairColor"
+                    type="text"
+                    validate={{
+                      required: { value: true, message: translate('entity.validation.required') },
+                    }}
+                    register={register}
+                  />
+                  <ValidatedField
+                    label={translate('lostChildApp.description.weight')}
+                    id="description-weight"
+                    name="description.weight"
+                    data-cy="weight"
+                    type="text"
+                    validate={{
+                      required: { value: true, message: translate('entity.validation.required') },
+                      validate: v => isNumber(v) || translate('entity.validation.number'),
+                    }}
+                    register={register}
+                  />
+                  <ValidatedField
+                    label={translate('lostChildApp.description.height')}
+                    id="description-height"
+                    name="description.height"
+                    data-cy="height"
+                    type="text"
+                    validate={{
+                      required: { value: true, message: translate('entity.validation.required') },
+                      validate: v => isNumber(v) || translate('entity.validation.number'),
+                    }}
+                    register={register}
+                  />
                 </Col>
+              </Row>
+              <Row className="child-last-seen">
+                <ChildLastSeen handleLastSeens={handleLastSeens} childLastSeens={childEntity.lastSeens} />
               </Row>
               <Row>
                 <div className="child-details-buttons">

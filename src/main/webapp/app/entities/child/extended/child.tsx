@@ -99,7 +99,7 @@ export const Child = (props: RouteComponentProps<{ url: string }>) => {
   return (
     <div>
       <h2 id="child-heading" data-cy="ChildHeading">
-        <Translate contentKey="lostChildApp.child.home.title">Children</Translate>
+        {/* <Translate contentKey="lostChildApp.child.home.title">Children</Translate> */}
         <div className="d-flex justify-content-end">
           <Button className="me-2" color="info" onClick={handleSyncList} disabled={loading}>
             <FontAwesomeIcon icon="sync" spin={loading} />{' '}
@@ -186,16 +186,6 @@ export const Child = (props: RouteComponentProps<{ url: string }>) => {
                           </div>
                         </Col>
                       </Row>
-                      {/* <td>{child.address ? <Link to={`address/${child.address.id}`}>{child.address.id}</Link> : ''}</td>
-                      <td>{child.description ? <Link to={`description/${child.description.id}`}>{child.description.id}</Link> : ''}</td>
-                      <td>
-                        {child.contactInformation ? (
-                          <Link to={`contact-information/${child.contactInformation.id}`}>{child.contactInformation.id}</Link>
-                        ) : (
-                          ''
-                        )}
-                      </td>
-                      <td>{child.user ? child.user.id : ''}</td> */}
                       <div className="grid-card-btns flex-btn-group-container">
                         <Button
                           className="grid-card-btn"
@@ -210,21 +200,6 @@ export const Child = (props: RouteComponentProps<{ url: string }>) => {
                             <Translate contentKey="entity.action.view">View</Translate>
                           </span>
                         </Button>
-                        {isAdmin && (
-                          <Button
-                            className="grid-card-btn"
-                            tag={Link}
-                            to={`${match.url}/${child.id}/edit`}
-                            color="primary"
-                            size="sm"
-                            data-cy="entityEditButton"
-                          >
-                            <FontAwesomeIcon icon="pencil-alt" />{' '}
-                            <span className="d-none d-md-inline">
-                              <Translate contentKey="entity.action.edit">Edit</Translate>
-                            </span>
-                          </Button>
-                        )}
                         {isAdmin && (
                           <Button
                             className="grid-card-btn"

@@ -37,7 +37,7 @@ entity LastSeen {
 entity ContactInformation {
 	name String required minlength(3) maxlength(20)
     email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
-    phoneNumber Integer required min(3) max(11)
+    phoneNumber Integer required minlength(3) maxlength(11)
 }
 
 relationship OneToOne {

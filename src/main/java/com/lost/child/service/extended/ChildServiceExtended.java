@@ -2,6 +2,9 @@ package com.lost.child.service.extended;
 
 import com.lost.child.domain.Child;
 import com.lost.child.domain.LastSeen;
+import com.lost.child.repository.AddressRepository;
+import com.lost.child.repository.ContactInformationRepository;
+import com.lost.child.repository.DescriptionRepository;
 import com.lost.child.repository.LastSeenRepository;
 import com.lost.child.repository.extended.ChildRepositoryExtended;
 import com.lost.child.service.ChildService;
@@ -34,18 +37,27 @@ public class ChildServiceExtended extends ChildService {
     private final ChildMapper childMapper;
     private final ChildMapperExtended childMapperExtended;
     private final LastSeenRepository lastSeenRepository;
+    private final AddressRepository addressRepository;
+    private final DescriptionRepository descriptionRepository;
+    private final ContactInformationRepository contactInformationRepository;
 
     public ChildServiceExtended(
         ChildRepositoryExtended childRepositoryExtended,
         ChildMapperExtended childMapperExtended,
         ChildMapper childMapper,
-        LastSeenRepository lastSeenRepository
+        LastSeenRepository lastSeenRepository,
+        AddressRepository addressRepository,
+        DescriptionRepository descriptionRepository,
+        ContactInformationRepository contactInformationRepository
     ) {
         super(childRepositoryExtended, childMapper);
         this.childRepositoryExtended = childRepositoryExtended;
         this.childMapperExtended = childMapperExtended;
         this.childMapper = childMapper;
         this.lastSeenRepository = lastSeenRepository;
+        this.addressRepository = addressRepository;
+        this.descriptionRepository = descriptionRepository;
+        this.contactInformationRepository = contactInformationRepository;
     }
 
     /**
@@ -57,8 +69,17 @@ public class ChildServiceExtended extends ChildService {
     public ChildDTOExtended save(ChildDTOExtended childDTO) {
         log.debug("Request to save Child : {}", childDTO);
         Child child = childMapperExtended.toEntity(childDTO);
-        Child savedChild = childRepositoryExtended.save(child);
+        child
+            .getLastSeens()
+            .stream()
+            .forEach(ls -> {
+                addressRepository.save(ls.getAddress());
+            });
         lastSeenRepository.saveAll(child.getLastSeens());
+        addressRepository.save(child.getAddress());
+        descriptionRepository.save(child.getDescription());
+        contactInformationRepository.save(child.getContactInformation());
+        childRepositoryExtended.save(child);
         return childMapperExtended.toDto(child);
     }
 

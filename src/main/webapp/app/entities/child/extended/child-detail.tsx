@@ -80,9 +80,6 @@ export const ChildDetail = (props: RouteComponentProps<{ id: string }>) => {
                   </label>
                   {childEntity.status}
                 </p>
-                {/* <p>
-                  <label> Last seen: </label> {childEntity.lastSeens ? childEntity.lastSeens : ''}
-                </p> */}
                 <p>
                   <label>Contact information:</label>
                   <b>{childEntity.contactInformation ? childEntity.contactInformation.email : ' '}</b>
@@ -94,6 +91,11 @@ export const ChildDetail = (props: RouteComponentProps<{ id: string }>) => {
                     </b>
                   </p>
                 </p>
+                <div className="child-last-seen-details">
+                  <p>
+                    <label>Last seen History:</label>
+                  </p>
+                </div>
               </div>
             </Col>
             <div className="details-btns">

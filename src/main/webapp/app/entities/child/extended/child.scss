@@ -12,7 +12,7 @@ body {
   margin-right: auto;
   height: 290px;
   min-width: 310px;
-  max-width: 400px;
+  max-width: 420px;
   padding: 18px 12px 18px 7px;
   font-size: 0.8rem;
   line-height: 12px;
@@ -34,13 +34,11 @@ body {
   .grid-card-image {
     img,
     svg {
-      height: 70px;
-      width: 70px;
+      height: 75px;
+      width: 75px;
       object-fit: contain;
-      border: 1px solid rgba(0, 0, 0, 0.2);
       border-radius: 50%;
-      vertical-align: middle;
-      border-style: none;
+      margin-left: 1rem;
     }
   }
   .grid-card-header {
@@ -94,7 +92,7 @@ body {
       margin-bottom: 1rem;
     }
     img {
-      background-color: #f0f8ff;
+      background-color: #525252;
       width: 250px;
       height: 250px;
       justify-content: center;
@@ -114,6 +112,10 @@ body {
 
 // Child Update || Child Edit
 .add-edit-child {
+  .header {
+    color: #0092a0;
+    font-weight: bold;
+  }
   .child-info {
     padding: 1rem;
     box-shadow: 0 2px 2px 0 rgba(3, 70, 77, 0.466);
@@ -121,7 +123,7 @@ body {
     border-top-left-radius: 0.5rem;
   }
   .image-preview {
-    width: 300px;
+    width: 100%;
     height: 200px;
     margin: auto;
     margin-top: 1rem;
@@ -134,7 +136,7 @@ body {
     margin-top: 7px;
     border: none;
   }
-  .child-contact-status {
+  .child-contact-info {
     margin-top: 0.7rem;
     padding: 1rem;
     box-shadow: 0 2px 2px 0 rgba(3, 70, 77, 0.466);
@@ -143,11 +145,19 @@ body {
     margin-top: 0.7rem;
     padding: 1rem;
     box-shadow: 0 2px 2px 0 rgba(3, 70, 77, 0.466);
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
   }
   .child-details-buttons {
     margin-top: 1rem;
     padding: 0;
+  }
+  .child-last-seen {
+    margin-top: 0.7rem;
+    padding: 1rem;
+    box-shadow: 0 2px 2px 0 rgba(3, 70, 77, 0.466);
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    #saveLastSeen {
+      float: right;
+    }
   }
 }
