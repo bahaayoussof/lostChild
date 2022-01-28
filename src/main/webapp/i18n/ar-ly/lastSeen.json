@@ -19,7 +19,7 @@
       },
       "id": "ID",
       "date": "Date",
-      "address": "Address",
+      "lastSeenAddress": "Last Seen Address",
       "child": "Child"
     }
   }

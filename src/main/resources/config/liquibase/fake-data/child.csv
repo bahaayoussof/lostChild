@@ -1,11 +1,11 @@
 id;image;image_content_type;name;age;gender;birthdate;status;agency
 1;../fake-data/blob/hipster.png;image/png;value-added bifurcated;16;Male;2022-01-14;Open;bus s
 2;../fake-data/blob/hipster.png;image/png;Georgia Granite;16;Male;2022-01-13;Close;circu
-3;../fake-data/blob/hipster.png;image/png;Alabama Intelligent;6;Female;2022-01-14;Close;incen
-4;../fake-data/blob/hipster.png;image/png;Fresh Loan;4;Female;2022-01-14;Close;lime
+3;../fake-data/blob/hipster.png;image/png;Alabama Intelligent;5;Female;2022-01-14;Close;incen
+4;../fake-data/blob/hipster.png;image/png;Fresh Loan;3;Female;2022-01-14;Close;lime
 5;../fake-data/blob/hipster.png;image/png;Director;11;Male;2022-01-14;Open;Facto
 6;../fake-data/blob/hipster.png;image/png;Cotton;11;Male;2022-01-14;Close;Hawai
-7;../fake-data/blob/hipster.png;image/png;enterprise Health;5;Female;2022-01-14;Open;Pants
-8;../fake-data/blob/hipster.png;image/png;program Personal;6;Female;2022-01-14;Open;Virgi
-9;../fake-data/blob/hipster.png;image/png;integrated;11;Male;2022-01-14;Close;Custo
-10;../fake-data/blob/hipster.png;image/png;Lilangeni Account;3;Female;2022-01-14;Open;Avon 
+7;../fake-data/blob/hipster.png;image/png;enterprise Health;4;Female;2022-01-14;Open;Pants
+8;../fake-data/blob/hipster.png;image/png;program Personal;5;Female;2022-01-14;Open;Virgi
+9;../fake-data/blob/hipster.png;image/png;integrated;10;Male;2022-01-14;Close;Custo
+10;../fake-data/blob/hipster.png;image/png;Lilangeni Account;2;Female;2022-01-14;Open;Avon 

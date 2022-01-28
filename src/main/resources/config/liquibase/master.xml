@@ -20,6 +20,7 @@
     <include file="config/liquibase/changelog/20220114185611_added_entity_Address.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20220114185612_added_entity_LastSeen.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20220114185613_added_entity_ContactInformation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220128114808_added_entity_LastSeenAddress.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20220114185609_added_entity_constraints_Child.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20220114185612_added_entity_constraints_LastSeen.xml" relativeToChangelogFile="false"/>

@@ -4,8 +4,8 @@ import { Button, Row, Col, FormText } from 'reactstrap';
 import { isNumber, Translate, translate, ValidatedField, ValidatedForm } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { IAddress } from 'app/shared/model/address.model';
-import { getEntities as getAddresses } from 'app/entities/address/address.reducer';
+import { ILastSeenAddress } from 'app/shared/model/last-seen-address.model';
+import { getEntities as getLastSeenAddresses } from 'app/entities/last-seen-address/last-seen-address.reducer';
 import { IChild } from 'app/shared/model/child.model';
 import { getEntities as getChildren } from 'app/entities/child/child.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './last-seen.reducer';
@@ -19,7 +19,7 @@ export const LastSeenUpdate = (props: RouteComponentProps<{ id: string }>) => {
 
   const [isNew] = useState(!props.match.params || !props.match.params.id);
 
-  const addresses = useAppSelector(state => state.address.entities);
+  const lastSeenAddresses = useAppSelector(state => state.lastSeenAddress.entities);
   const children = useAppSelector(state => state.child.entities);
   const lastSeenEntity = useAppSelector(state => state.lastSeen.entity);
   const loading = useAppSelector(state => state.lastSeen.loading);
@@ -36,7 +36,7 @@ export const LastSeenUpdate = (props: RouteComponentProps<{ id: string }>) => {
       dispatch(getEntity(props.match.params.id));
     }
 
-    dispatch(getAddresses({}));
+    dispatch(getLastSeenAddresses({}));
     dispatch(getChildren({}));
   }, []);
 
@@ -50,7 +50,7 @@ export const LastSeenUpdate = (props: RouteComponentProps<{ id: string }>) => {
     const entity = {
       ...lastSeenEntity,
       ...values,
-      address: addresses.find(it => it.id.toString() === values.address.toString()),
+      lastSeenAddress: lastSeenAddresses.find(it => it.id.toString() === values.lastSeenAddress.toString()),
       child: children.find(it => it.id.toString() === values.child.toString()),
     };
 
@@ -66,7 +66,7 @@ export const LastSeenUpdate = (props: RouteComponentProps<{ id: string }>) => {
       ? {}
       : {
           ...lastSeenEntity,
-          address: lastSeenEntity?.address?.id,
+          lastSeenAddress: lastSeenEntity?.lastSeenAddress?.id,
           child: lastSeenEntity?.child?.id,
         };
 
@@ -106,15 +106,15 @@ export const LastSeenUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 }}
               />
               <ValidatedField
-                id="last-seen-address"
-                name="address"
-                data-cy="address"
-                label={translate('lostChildApp.lastSeen.address')}
+                id="last-seen-lastSeenAddress"
+                name="lastSeenAddress"
+                data-cy="lastSeenAddress"
+                label={translate('lostChildApp.lastSeen.lastSeenAddress')}
                 type="select"
               >
                 <option value="" key="0" />
-                {addresses
-                  ? addresses.map(otherEntity => (
+                {lastSeenAddresses
+                  ? lastSeenAddresses.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
                         {otherEntity.id}
                       </option>

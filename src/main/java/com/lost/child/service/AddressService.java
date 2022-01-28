@@ -91,20 +91,6 @@ public class AddressService {
     }
 
     /**
-     *  Get all the addresses where LastSeen is {@code null}.
-     *  @return the list of entities.
-     */
-    @Transactional(readOnly = true)
-    public List<AddressDTO> findAllWhereLastSeenIsNull() {
-        log.debug("Request to get all addresses where LastSeen is null");
-        return StreamSupport
-            .stream(addressRepository.findAll().spliterator(), false)
-            .filter(address -> address.getLastSeen() == null)
-            .map(addressMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
-    }
-
-    /**
      * Get one address by id.
      *
      * @param id the id of the entity.

@@ -40,7 +40,7 @@ public class Child implements Serializable {
     private String name;
 
     @NotNull
-    @Min(value = 1)
+    @Min(value = 0)
     @Max(value = 18)
     @Column(name = "age", nullable = false)
     private Integer age;
@@ -63,7 +63,7 @@ public class Child implements Serializable {
     @Column(name = "agency", length = 5)
     private String agency;
 
-    @JsonIgnoreProperties(value = { "child", "lastSeen" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "child" }, allowSetters = true)
     @OneToOne
     @JoinColumn(unique = true)
     private Address address;
@@ -83,7 +83,7 @@ public class Child implements Serializable {
 
     @OneToMany(mappedBy = "child")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "address", "child" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "lastSeenAddress", "child" }, allowSetters = true)
     private Set<LastSeen> lastSeens = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

@@ -21,6 +21,8 @@ import address from 'app/entities/address/address.reducer';
 import lastSeen from 'app/entities/last-seen/last-seen.reducer';
 // prettier-ignore
 import contactInformation from 'app/entities/contact-information/contact-information.reducer';
+// prettier-ignore
+import lastSeenAddress from 'app/entities/last-seen-address/last-seen-address.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 const rootReducer = {
@@ -39,6 +41,7 @@ const rootReducer = {
   address,
   lastSeen,
   contactInformation,
+  lastSeenAddress,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar,
 };

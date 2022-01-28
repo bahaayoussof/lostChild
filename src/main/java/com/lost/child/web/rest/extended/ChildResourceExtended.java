@@ -109,9 +109,9 @@ public class ChildResourceExtended extends ChildResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/children-extended/{id}")
-    public ResponseEntity<ChildDTO> updateChild(
+    public ResponseEntity<ChildDTOExtended> updateChild(
         @PathVariable(value = "id", required = false) final Long id,
-        @Valid @RequestBody ChildDTO childDTO
+        @Valid @RequestBody ChildDTOExtended childDTO
     ) throws URISyntaxException {
         log.debug("REST request to update Child : {}, {}", id, childDTO);
         if (childDTO.getId() == null) {
@@ -125,7 +125,7 @@ public class ChildResourceExtended extends ChildResource {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        ChildDTO result = childServiceExtended.save(childDTO);
+        ChildDTOExtended result = childServiceExtended.save(childDTO);
         return ResponseEntity
             .ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, childDTO.getId().toString()))

@@ -9,6 +9,7 @@ import Description from './description';
 import Address from './address';
 import LastSeen from './last-seen';
 import ContactInformation from './contact-information';
+import LastSeenAddress from './last-seen-address';
 /* jhipster-needle-add-route-import - JHipster will add routes here */
 
 const Routes = ({ match }) => (
@@ -20,6 +21,7 @@ const Routes = ({ match }) => (
       <ErrorBoundaryRoute path={`${match.url}address`} component={Address} />
       <ErrorBoundaryRoute path={`${match.url}last-seen`} component={LastSeen} />
       <ErrorBoundaryRoute path={`${match.url}contact-information`} component={ContactInformation} />
+      <ErrorBoundaryRoute path={`${match.url}last-seen-address`} component={LastSeenAddress} />
       {/* jhipster-needle-add-route-path - JHipster will add routes here */}
     </Switch>
   </div>

@@ -139,7 +139,7 @@ export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 type="text"
                 validate={{
                   required: { value: true, message: translate('entity.validation.required') },
-                  min: { value: 1, message: translate('entity.validation.min', { min: 1 }) },
+                  min: { value: 0, message: translate('entity.validation.min', { min: 0 }) },
                   max: { value: 18, message: translate('entity.validation.max', { max: 18 }) },
                   validate: v => isNumber(v) || translate('entity.validation.number'),
                 }}

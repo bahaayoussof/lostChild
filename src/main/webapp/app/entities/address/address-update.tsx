@@ -6,8 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IChild } from 'app/shared/model/child.model';
 import { getEntities as getChildren } from 'app/entities/child/child.reducer';
-import { ILastSeen } from 'app/shared/model/last-seen.model';
-import { getEntities as getLastSeens } from 'app/entities/last-seen/last-seen.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './address.reducer';
 import { IAddress } from 'app/shared/model/address.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -20,7 +18,6 @@ export const AddressUpdate = (props: RouteComponentProps<{ id: string }>) => {
   const [isNew] = useState(!props.match.params || !props.match.params.id);
 
   const children = useAppSelector(state => state.child.entities);
-  const lastSeens = useAppSelector(state => state.lastSeen.entities);
   const addressEntity = useAppSelector(state => state.address.entity);
   const loading = useAppSelector(state => state.address.loading);
   const updating = useAppSelector(state => state.address.updating);
@@ -37,7 +34,6 @@ export const AddressUpdate = (props: RouteComponentProps<{ id: string }>) => {
     }
 
     dispatch(getChildren({}));
-    dispatch(getLastSeens({}));
   }, []);
 
   useEffect(() => {

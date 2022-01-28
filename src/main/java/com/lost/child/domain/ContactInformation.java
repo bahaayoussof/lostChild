@@ -33,10 +33,10 @@ public class ContactInformation implements Serializable {
     private String email;
 
     @NotNull
-    @Min(value = 3)
-    @Max(value = 11)
-    @Column(name = "phone_number", nullable = false)
-    private Integer phoneNumber;
+    @Size(min = 3, max = 11)
+    @Pattern(regexp = "^[0-9]*$")
+    @Column(name = "phone_number", length = 11, nullable = false)
+    private String phoneNumber;
 
     @JsonIgnoreProperties(value = { "address", "description", "contactInformation", "user", "lastSeens" }, allowSetters = true)
     @OneToOne(mappedBy = "contactInformation")
@@ -83,16 +83,16 @@ public class ContactInformation implements Serializable {
         this.email = email;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return this.phoneNumber;
     }
 
-    public ContactInformation phoneNumber(Integer phoneNumber) {
+    public ContactInformation phoneNumber(String phoneNumber) {
         this.setPhoneNumber(phoneNumber);
         return this;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -141,7 +141,7 @@ public class ContactInformation implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", email='" + getEmail() + "'" +
-            ", phoneNumber=" + getPhoneNumber() +
+            ", phoneNumber='" + getPhoneNumber() + "'" +
             "}";
     }
 }

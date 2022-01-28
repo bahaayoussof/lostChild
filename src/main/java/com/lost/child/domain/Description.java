@@ -31,10 +31,14 @@ public class Description implements Serializable {
     private String hairColor;
 
     @NotNull
+    @Min(value = 1)
+    @Max(value = 350)
     @Column(name = "weight", nullable = false)
     private Integer weight;
 
     @NotNull
+    @Min(value = 1)
+    @Max(value = 300)
     @Column(name = "height", nullable = false)
     private Integer height;
 

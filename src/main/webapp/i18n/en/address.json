@@ -22,8 +22,7 @@
       "city": "City",
       "state": "State",
       "country": "Country",
-      "child": "Child",
-      "lastSeen": "Last Seen"
+      "child": "Child"
     }
   }
 }

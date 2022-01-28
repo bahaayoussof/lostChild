@@ -4,7 +4,7 @@ export interface IContactInformation {
   id?: number;
   name?: string;
   email?: string;
-  phoneNumber?: number;
+  phoneNumber?: string;
   child?: IChild | null;
 }
 

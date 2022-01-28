@@ -44,8 +44,8 @@ class ChildResourceIT {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_AGE = 1;
-    private static final Integer UPDATED_AGE = 2;
+    private static final Integer DEFAULT_AGE = 0;
+    private static final Integer UPDATED_AGE = 1;
 
     private static final Gender DEFAULT_GENDER = Gender.Male;
     private static final Gender UPDATED_GENDER = Gender.Female;

@@ -1,0 +1,28 @@
+{
+  "lostChildApp": {
+    "lastSeenAddress": {
+      "home": {
+        "title": "Last Seen Addresses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Last Seen Address",
+        "createOrEditLabel": "Create or edit a Last Seen Address",
+        "notFound": "No Last Seen Addresses found"
+      },
+      "created": "A new Last Seen Address is created with identifier {{ param }}",
+      "updated": "A Last Seen Address is updated with identifier {{ param }}",
+      "deleted": "A Last Seen Address is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Last Seen Address {{ id }}?"
+      },
+      "detail": {
+        "title": "Last Seen Address"
+      },
+      "id": "ID",
+      "street": "Street",
+      "city": "City",
+      "state": "State",
+      "country": "Country",
+      "lastSeen": "Last Seen"
+    }
+  }
+}

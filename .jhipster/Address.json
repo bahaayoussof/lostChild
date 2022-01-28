@@ -27,13 +27,6 @@
       "otherEntityRelationshipName": "address",
       "relationshipName": "child",
       "ownerSide": false
-    },
-    {
-      "relationshipType": "one-to-one",
-      "otherEntityName": "lastSeen",
-      "otherEntityRelationshipName": "address",
-      "relationshipName": "lastSeen",
-      "ownerSide": false
     }
   ],
   "entityTableName": "address",

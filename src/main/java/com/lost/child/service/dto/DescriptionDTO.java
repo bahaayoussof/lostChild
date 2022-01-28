@@ -18,9 +18,13 @@ public class DescriptionDTO implements Serializable {
     private String hairColor;
 
     @NotNull
+    @Min(value = 1)
+    @Max(value = 350)
     private Integer weight;
 
     @NotNull
+    @Min(value = 1)
+    @Max(value = 300)
     private Integer height;
 
     public Long getId() {

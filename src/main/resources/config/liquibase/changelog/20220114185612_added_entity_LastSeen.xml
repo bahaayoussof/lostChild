@@ -17,8 +17,8 @@
             <column name="date" type="date">
                 <constraints nullable="false" />
             </column>
-            <column name="address_id" type="bigint">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_last_seen__address_id" />
+            <column name="last_seen_address_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_last_seen__last_seen_address_id" />
             </column>
             <column name="child_id" type="bigint">
                 <constraints nullable="true" />

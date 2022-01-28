@@ -37,8 +37,8 @@ class ContactInformationResourceIT {
     private static final String DEFAULT_EMAIL = "/G@-l.oWxA1";
     private static final String UPDATED_EMAIL = "EkC@otEw.U_x!";
 
-    private static final Integer DEFAULT_PHONE_NUMBER = 3;
-    private static final Integer UPDATED_PHONE_NUMBER = 4;
+    private static final String DEFAULT_PHONE_NUMBER = "";
+    private static final String UPDATED_PHONE_NUMBER = "B";
 
     private static final String ENTITY_API_URL = "/api/contact-informations";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -359,7 +359,7 @@ class ContactInformationResourceIT {
         ContactInformation partialUpdatedContactInformation = new ContactInformation();
         partialUpdatedContactInformation.setId(contactInformation.getId());
 
-        partialUpdatedContactInformation.phoneNumber(UPDATED_PHONE_NUMBER);
+        partialUpdatedContactInformation.name(UPDATED_NAME).email(UPDATED_EMAIL).phoneNumber(UPDATED_PHONE_NUMBER);
 
         restContactInformationMockMvc
             .perform(
@@ -373,8 +373,8 @@ class ContactInformationResourceIT {
         List<ContactInformation> contactInformationList = contactInformationRepository.findAll();
         assertThat(contactInformationList).hasSize(databaseSizeBeforeUpdate);
         ContactInformation testContactInformation = contactInformationList.get(contactInformationList.size() - 1);
-        assertThat(testContactInformation.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testContactInformation.getEmail()).isEqualTo(DEFAULT_EMAIL);
+        assertThat(testContactInformation.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testContactInformation.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testContactInformation.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);
     }
 

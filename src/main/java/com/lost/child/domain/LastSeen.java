@@ -27,10 +27,10 @@ public class LastSeen implements Serializable {
     @Column(name = "date", nullable = false)
     private LocalDate date;
 
-    @JsonIgnoreProperties(value = { "child", "lastSeen" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "lastSeen" }, allowSetters = true)
     @OneToOne
     @JoinColumn(unique = true)
-    private Address address;
+    private LastSeenAddress lastSeenAddress;
 
     @ManyToOne
     @JsonIgnoreProperties(value = { "address", "description", "contactInformation", "user", "lastSeens" }, allowSetters = true)
@@ -64,16 +64,16 @@ public class LastSeen implements Serializable {
         this.date = date;
     }
 
-    public Address getAddress() {
-        return this.address;
+    public LastSeenAddress getLastSeenAddress() {
+        return this.lastSeenAddress;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setLastSeenAddress(LastSeenAddress lastSeenAddress) {
+        this.lastSeenAddress = lastSeenAddress;
     }
 
-    public LastSeen address(Address address) {
-        this.setAddress(address);
+    public LastSeen lastSeenAddress(LastSeenAddress lastSeenAddress) {
+        this.setLastSeenAddress(lastSeenAddress);
         return this;
     }
 

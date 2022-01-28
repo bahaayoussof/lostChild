@@ -2,9 +2,11 @@ package com.lost.child.service.extended;
 
 import com.lost.child.domain.Child;
 import com.lost.child.domain.LastSeen;
+import com.lost.child.domain.LastSeenAddress;
 import com.lost.child.repository.AddressRepository;
 import com.lost.child.repository.ContactInformationRepository;
 import com.lost.child.repository.DescriptionRepository;
+import com.lost.child.repository.LastSeenAddressRepository;
 import com.lost.child.repository.LastSeenRepository;
 import com.lost.child.repository.extended.ChildRepositoryExtended;
 import com.lost.child.service.ChildService;
@@ -38,6 +40,7 @@ public class ChildServiceExtended extends ChildService {
     private final ChildMapperExtended childMapperExtended;
     private final LastSeenRepository lastSeenRepository;
     private final AddressRepository addressRepository;
+    private final LastSeenAddressRepository lastSeenAddressRepository;
     private final DescriptionRepository descriptionRepository;
     private final ContactInformationRepository contactInformationRepository;
 
@@ -47,6 +50,7 @@ public class ChildServiceExtended extends ChildService {
         ChildMapper childMapper,
         LastSeenRepository lastSeenRepository,
         AddressRepository addressRepository,
+        LastSeenAddressRepository lastSeenAddressRepository,
         DescriptionRepository descriptionRepository,
         ContactInformationRepository contactInformationRepository
     ) {
@@ -56,6 +60,7 @@ public class ChildServiceExtended extends ChildService {
         this.childMapper = childMapper;
         this.lastSeenRepository = lastSeenRepository;
         this.addressRepository = addressRepository;
+        this.lastSeenAddressRepository = lastSeenAddressRepository;
         this.descriptionRepository = descriptionRepository;
         this.contactInformationRepository = contactInformationRepository;
     }
@@ -72,15 +77,15 @@ public class ChildServiceExtended extends ChildService {
         child
             .getLastSeens()
             .stream()
-            .forEach(ls -> {
-                addressRepository.save(ls.getAddress());
+            .forEach(lastSeen -> {
+                lastSeenAddressRepository.save(lastSeen.getLastSeenAddress());
             });
         lastSeenRepository.saveAll(child.getLastSeens());
         addressRepository.save(child.getAddress());
         descriptionRepository.save(child.getDescription());
         contactInformationRepository.save(child.getContactInformation());
-        childRepositoryExtended.save(child);
-        return childMapperExtended.toDto(child);
+        Child saveChild = childRepositoryExtended.save(child);
+        return childMapperExtended.toDto(saveChild);
     }
 
     /**

@@ -20,9 +20,9 @@ public class ContactInformationDTO implements Serializable {
     private String email;
 
     @NotNull
-    @Min(value = 3)
-    @Max(value = 11)
-    private Integer phoneNumber;
+    @Size(min = 3, max = 11)
+    @Pattern(regexp = "^[0-9]*$")
+    private String phoneNumber;
 
     public Long getId() {
         return id;
@@ -48,11 +48,11 @@ public class ContactInformationDTO implements Serializable {
         this.email = email;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -84,7 +84,7 @@ public class ContactInformationDTO implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", email='" + getEmail() + "'" +
-            ", phoneNumber=" + getPhoneNumber() +
+            ", phoneNumber='" + getPhoneNumber() + "'" +
             "}";
     }
 }

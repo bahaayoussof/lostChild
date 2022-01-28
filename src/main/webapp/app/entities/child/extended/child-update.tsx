@@ -38,9 +38,10 @@ export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
   const updateSuccess = useAppSelector(state => state.child.updateSuccess);
   const genderValues = Object.keys(Gender);
   const statusValues = Object.keys(Status);
+  const [updateImage] = useState(!isNew ? 'data:' + childEntity.imageContentType + ';base64,' + childEntity.image : null);
 
   const [img, setImg] = useState(null);
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState(!isNew && updateImage ? updateImage.split(',')[1] : null);
 
   const getBase64 = file => {
     const reader = new FileReader();
@@ -63,7 +64,6 @@ export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
   let lastSeens = [];
   const handleLastSeens = lseen => {
     lastSeens = [...lastSeens, lseen];
-    console.log('🚀 ~ file: child-update.tsx ~ line 66 ~ ChildUpdate ~ lastSeens', lastSeens);
   };
 
   const handleClose = () => {
@@ -89,6 +89,7 @@ export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
 
   const saveEntity = values => {
     const imageContentType = 'image/.*';
+    console.log('🚀 ~ file: child-update.tsx ~ line 94 ~ ChildUpdate ~ image', image);
     const entity = {
       ...childEntity,
       ...values,
@@ -116,10 +117,9 @@ export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
           status: 'Open',
           ...childEntity,
           img: childEntity?.image,
-          address: childEntity?.address,
-          description: childEntity?.description,
-          contactInformation: childEntity?.contactInformation,
-          lastSeens: childEntity?.lastSeens,
+          // address: childEntity?.address,
+          // description: childEntity?.description,
+          // contactInformation: childEntity?.contactInformation,
         };
 
   const {
@@ -249,6 +249,7 @@ export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
                       accept="image/.*"
                     />
                     {img ? <img className="image-preview" src={img} alt={childEntity.name} /> : null}
+                    {!img && updateImage ? <img className="image-preview" src={updateImage} alt={childEntity.name} /> : null}
                   </div>
                 </Col>
               </Row>
@@ -264,7 +265,7 @@ export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
                     validate={{
                       required: { value: true, message: translate('entity.validation.required') },
                       minLength: { value: 3, message: translate('entity.validation.minlength', { min: 3 }) },
-                      maxLength: { value: 20, message: translate('entity.validation.maxlength', { max: 20 }) },
+                      maxLength: { value: 20, message: "translate('entity.validation.maxlength', { max: 20 })" },
                     }}
                     register={register}
                   />
@@ -278,9 +279,9 @@ export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
                     type="text"
                     validate={{
                       required: { value: true, message: translate('entity.validation.required') },
-                      min: { value: 3, message: translate('entity.validation.min', { min: 3 }) },
-                      max: { value: 11, message: translate('entity.validation.max', { max: 11 }) },
-                      validate: v => isNumber(v) || translate('entity.validation.number'),
+                      minLength: { value: 3, message: translate('entity.validation.minlength', { min: 3 }) },
+                      maxLength: { value: 11, message: translate('entity.validation.maxlength', { max: 11 }) },
+                      pattern: { value: /^[0-9]*$/, message: 'this field should be numbers' },
                     }}
                     register={register}
                   />
@@ -301,25 +302,6 @@ export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
                   }}
                   register={register}
                 />
-                {/* <Col md={6}>
-                  <ValidatedField
-                    id="child-user"
-                    name="user"
-                    data-cy="user"
-                    label={translate('lostChildApp.child.user')}
-                    type="select"
-                    register={register}
-                  >
-                    <option value="" key="0" />
-                    {users
-                      ? users.map(otherEntity => (
-                          <option value={otherEntity.id} key={otherEntity.id}>
-                            {otherEntity.id}
-                          </option>
-                        ))
-                      : null}
-                  </ValidatedField>
-                </Col> */}
               </Row>
               <Row className="child-address-description">
                 <Col md={6}>

@@ -121,9 +121,9 @@ export const ContactInformationUpdate = (props: RouteComponentProps<{ id: string
                 type="text"
                 validate={{
                   required: { value: true, message: translate('entity.validation.required') },
-                  min: { value: 3, message: translate('entity.validation.min', { min: 3 }) },
-                  max: { value: 11, message: translate('entity.validation.max', { max: 11 }) },
-                  validate: v => isNumber(v) || translate('entity.validation.number'),
+                  minLength: { value: 3, message: translate('entity.validation.minlength', { min: 3 }) },
+                  maxLength: { value: 11, message: translate('entity.validation.maxlength', { max: 11 }) },
+                  pattern: { value: /^[0-9]*$/, message: translate('entity.validation.pattern', { pattern: '^[0-9]*$' }) },
                 }}
               />
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/contact-information" replace color="info">

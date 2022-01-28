@@ -12,6 +12,7 @@
         "address": "Address",
         "lastSeen": "Last Seen",
         "contactInformation": "Contact Information",
+        "lastSeenAddress": "Last Seen Address",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

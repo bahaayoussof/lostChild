@@ -53,7 +53,7 @@ export const LastSeen = (props: RouteComponentProps<{ url: string }>) => {
                   <Translate contentKey="lostChildApp.lastSeen.date">Date</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="lostChildApp.lastSeen.address">Address</Translate>
+                  <Translate contentKey="lostChildApp.lastSeen.lastSeenAddress">Last Seen Address</Translate>
                 </th>
                 <th>
                   <Translate contentKey="lostChildApp.lastSeen.child">Child</Translate>
@@ -70,7 +70,13 @@ export const LastSeen = (props: RouteComponentProps<{ url: string }>) => {
                     </Button>
                   </td>
                   <td>{lastSeen.date ? <TextFormat type="date" value={lastSeen.date} format={APP_LOCAL_DATE_FORMAT} /> : null}</td>
-                  <td>{lastSeen.address ? <Link to={`address/${lastSeen.address.id}`}>{lastSeen.address.id}</Link> : ''}</td>
+                  <td>
+                    {lastSeen.lastSeenAddress ? (
+                      <Link to={`last-seen-address/${lastSeen.lastSeenAddress.id}`}>{lastSeen.lastSeenAddress.id}</Link>
+                    ) : (
+                      ''
+                    )}
+                  </td>
                   <td>{lastSeen.child ? <Link to={`child/${lastSeen.child.id}`}>{lastSeen.child.id}</Link> : ''}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">

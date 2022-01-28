@@ -145,11 +145,6 @@ public class AddressResource {
             log.debug("REST request to get all Addresss where child is null");
             return addressService.findAllWhereChildIsNull();
         }
-
-        if ("lastseen-is-null".equals(filter)) {
-            log.debug("REST request to get all Addresss where lastSeen is null");
-            return addressService.findAllWhereLastSeenIsNull();
-        }
         log.debug("REST request to get all Addresses");
         return addressService.findAll();
     }

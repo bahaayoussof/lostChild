@@ -16,10 +16,11 @@
     },
     {
       "fieldName": "phoneNumber",
-      "fieldType": "Integer",
-      "fieldValidateRules": ["required", "min", "max"],
-      "fieldValidateRulesMin": "3",
-      "fieldValidateRulesMax": "11"
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "maxlength", "pattern"],
+      "fieldValidateRulesMinlength": "3",
+      "fieldValidateRulesMaxlength": "11",
+      "fieldValidateRulesPattern": "^[0-9]*$"
     }
   ],
   "relationships": [

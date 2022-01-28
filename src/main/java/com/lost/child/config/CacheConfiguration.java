@@ -54,6 +54,7 @@ public class CacheConfiguration {
             createCache(cm, com.lost.child.domain.Address.class.getName());
             createCache(cm, com.lost.child.domain.LastSeen.class.getName());
             createCache(cm, com.lost.child.domain.ContactInformation.class.getName());
+            createCache(cm, com.lost.child.domain.LastSeenAddress.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

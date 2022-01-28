@@ -15,7 +15,7 @@ public class LastSeenDTO implements Serializable {
     @NotNull
     private LocalDate date;
 
-    private AddressDTO address;
+    private LastSeenAddressDTO lastSeenAddress;
 
     private ChildDTO child;
 
@@ -35,12 +35,12 @@ public class LastSeenDTO implements Serializable {
         this.date = date;
     }
 
-    public AddressDTO getAddress() {
-        return address;
+    public LastSeenAddressDTO getLastSeenAddress() {
+        return lastSeenAddress;
     }
 
-    public void setAddress(AddressDTO address) {
-        this.address = address;
+    public void setLastSeenAddress(LastSeenAddressDTO lastSeenAddress) {
+        this.lastSeenAddress = lastSeenAddress;
     }
 
     public ChildDTO getChild() {
@@ -78,7 +78,7 @@ public class LastSeenDTO implements Serializable {
         return "LastSeenDTO{" +
             "id=" + getId() +
             ", date='" + getDate() + "'" +
-            ", address=" + getAddress() +
+            ", lastSeenAddress=" + getLastSeenAddress() +
             ", child=" + getChild() +
             "}";
     }

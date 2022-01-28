@@ -17,7 +17,7 @@
       "fieldName": "age",
       "fieldType": "Integer",
       "fieldValidateRules": ["required", "min", "max"],
-      "fieldValidateRulesMin": "1",
+      "fieldValidateRulesMin": "0",
       "fieldValidateRulesMax": "18"
     },
     {

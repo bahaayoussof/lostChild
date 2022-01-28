@@ -40,10 +40,6 @@ public class Address implements Serializable {
     @OneToOne(mappedBy = "address")
     private Child child;
 
-    @JsonIgnoreProperties(value = { "address", "child" }, allowSetters = true)
-    @OneToOne(mappedBy = "address")
-    private LastSeen lastSeen;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -127,25 +123,6 @@ public class Address implements Serializable {
 
     public Address child(Child child) {
         this.setChild(child);
-        return this;
-    }
-
-    public LastSeen getLastSeen() {
-        return this.lastSeen;
-    }
-
-    public void setLastSeen(LastSeen lastSeen) {
-        if (this.lastSeen != null) {
-            this.lastSeen.setAddress(null);
-        }
-        if (lastSeen != null) {
-            lastSeen.setAddress(this);
-        }
-        this.lastSeen = lastSeen;
-    }
-
-    public Address lastSeen(LastSeen lastSeen) {
-        this.setLastSeen(lastSeen);
         return this;
     }
 

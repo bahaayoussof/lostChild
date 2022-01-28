@@ -1,7 +1,7 @@
 entity Child {
-	image ImageBlob 
+	image ImageBlob
     name String required minlength(3) maxlength(50)
-    age Integer required min(1) max(18)
+    age Integer required min(0) max(18)
     gender Gender required
     birthdate LocalDate required
     status Status required
@@ -19,11 +19,18 @@ enum Status {
 entity Description {
     eyeColor String required
     hairColor String required
-    weight Integer required
-    height Integer required
+    weight Integer required min(1) max(350)
+    height Integer required min(1) max(300)
 }
 
 entity Address {
+	street String required
+	city String required
+    state String
+    country String
+}
+
+entity LastSeenAddress {
 	street String required
 	city String required
     state String
@@ -37,14 +44,14 @@ entity LastSeen {
 entity ContactInformation {
 	name String required minlength(3) maxlength(20)
     email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
-    phoneNumber Integer required minlength(3) maxlength(11)
+    phoneNumber String required minlength(3) maxlength(11) pattern(/^[0-9]*$/)
 }
 
 relationship OneToOne {
 	Child to Address
     Child to Description
     Child to ContactInformation
-    LastSeen to Address
+    LastSeen to LastSeenAddress
 }
 
 relationship ManyToOne {

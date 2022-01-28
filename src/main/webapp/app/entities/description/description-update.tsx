@@ -115,6 +115,8 @@ export const DescriptionUpdate = (props: RouteComponentProps<{ id: string }>) =>
                 type="text"
                 validate={{
                   required: { value: true, message: translate('entity.validation.required') },
+                  min: { value: 1, message: translate('entity.validation.min', { min: 1 }) },
+                  max: { value: 350, message: translate('entity.validation.max', { max: 350 }) },
                   validate: v => isNumber(v) || translate('entity.validation.number'),
                 }}
               />
@@ -126,6 +128,8 @@ export const DescriptionUpdate = (props: RouteComponentProps<{ id: string }>) =>
                 type="text"
                 validate={{
                   required: { value: true, message: translate('entity.validation.required') },
+                  min: { value: 1, message: translate('entity.validation.min', { min: 1 }) },
+                  max: { value: 300, message: translate('entity.validation.max', { max: 300 }) },
                   validate: v => isNumber(v) || translate('entity.validation.number'),
                 }}
               />

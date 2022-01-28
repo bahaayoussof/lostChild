@@ -36,9 +36,9 @@ export const LastSeenDetail = (props: RouteComponentProps<{ id: string }>) => {
           </dt>
           <dd>{lastSeenEntity.date ? <TextFormat value={lastSeenEntity.date} type="date" format={APP_LOCAL_DATE_FORMAT} /> : null}</dd>
           <dt>
-            <Translate contentKey="lostChildApp.lastSeen.address">Address</Translate>
+            <Translate contentKey="lostChildApp.lastSeen.lastSeenAddress">Last Seen Address</Translate>
           </dt>
-          <dd>{lastSeenEntity.address ? lastSeenEntity.address.id : ''}</dd>
+          <dd>{lastSeenEntity.lastSeenAddress ? lastSeenEntity.lastSeenAddress.id : ''}</dd>
           <dt>
             <Translate contentKey="lostChildApp.lastSeen.child">Child</Translate>
           </dt>

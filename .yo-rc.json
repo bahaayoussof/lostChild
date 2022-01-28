@@ -41,7 +41,7 @@
     "clientThemeVariant": "",
     "languages": ["en", "ar-ly"],
     "enableGradleEnterprise": false,
-    "entities": ["Child", "Description", "Address", "LastSeen", "ContactInformation"],
-    "lastLiquibaseTimestamp": 1642186573000
+    "entities": ["Child", "Description", "Address", "LastSeen", "ContactInformation", "LastSeenAddress"],
+    "lastLiquibaseTimestamp": 1643370488000
   }
 }

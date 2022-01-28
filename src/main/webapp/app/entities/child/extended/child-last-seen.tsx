@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { ValidatedField, translate, Translate } from 'react-jhipster';
 import { Row, Col, Button, Table } from 'reactstrap';
 import './child.scss';
+import LastSeenDetails from './last-seen-details';
 /* eslint-disable no-console */
 const ChildLastSeen = props => {
   const { childLastSeens } = props;
@@ -37,7 +38,7 @@ const ChildLastSeen = props => {
   };
 
   const handleAddLastSeen = () => {
-    lastSeen.address = address;
+    lastSeen.lastSeenAddress = address;
     setLastSeens([...lastSeens, lastSeen]);
     props.handleLastSeens(lastSeen);
     setAddress({});
@@ -51,9 +52,9 @@ const ChildLastSeen = props => {
           <h5 className="header">Last Seen</h5>
           <Col md={6}>
             <ValidatedField
-              placeholder={translate('lostChildApp.address.street')}
-              id="address-street"
-              name="lastSeen.address.street"
+              placeholder={translate('lostChildApp.lastSeenAddress.street')}
+              id="last-seen-address-street"
+              name="lastSeenAddress.street"
               data-cy="street"
               type="text"
               value={address.street ?? ''}
@@ -65,7 +66,7 @@ const ChildLastSeen = props => {
             <ValidatedField
               placeholder={translate('lostChildApp.address.city')}
               id="address-city"
-              name="lastSeen.address.city"
+              name="lastSeenAddress.city"
               data-cy="city"
               type="text"
               value={address.city ?? ''}
@@ -79,7 +80,7 @@ const ChildLastSeen = props => {
             <ValidatedField
               placeholder={translate('lostChildApp.address.state')}
               id="address-state"
-              name="lastSeen.address.state"
+              name="lastSeenAddress.state"
               data-cy="state"
               type="text"
               value={address.state ?? ''}
@@ -88,7 +89,7 @@ const ChildLastSeen = props => {
             <ValidatedField
               placeholder={translate('lostChildApp.address.country')}
               id="address-country"
-              name="lastSeen.address.country"
+              name="lastSeenAddress.country"
               data-cy="country"
               type="text"
               value={address.country ?? ''}
@@ -101,7 +102,7 @@ const ChildLastSeen = props => {
             <ValidatedField
               placeholder={translate('lostChildApp.lastSeen.date')}
               id="last-seen-date"
-              name="lastSeen.date"
+              name="lastSeenAddress.date"
               data-cy="date"
               type="date"
               value={lastSeen.date ?? ''}
@@ -118,33 +119,8 @@ const ChildLastSeen = props => {
           </Col>
         </Row>
       </Row>
-
       <Row className="justify-content-center">
-        <Col md="12">
-          <Table responsive className="table">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Street</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Country</th>
-              </tr>
-            </thead>
-            <tbody>
-              {lastSeens &&
-                lastSeens.map((ls, i) => (
-                  <tr key={`entity-${i}`}>
-                    <td>{ls.date}</td>
-                    <td>{ls.address.street}</td>
-                    <td>{ls.address.city}</td>
-                    <td>{ls.address.state}</td>
-                    <td>{ls.address.country}</td>
-                  </tr>
-                ))}
-            </tbody>
-          </Table>
-        </Col>
+        <LastSeenDetails lastSeens={lastSeens} />
       </Row>
     </>
   );
