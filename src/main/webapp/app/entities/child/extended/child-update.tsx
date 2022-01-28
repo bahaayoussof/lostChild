@@ -89,7 +89,6 @@ export const ChildUpdate = (props: RouteComponentProps<{ id: string }>) => {
 
   const saveEntity = values => {
     const imageContentType = 'image/.*';
-    console.log('🚀 ~ file: child-update.tsx ~ line 94 ~ ChildUpdate ~ image', image);
     const entity = {
       ...childEntity,
       ...values,

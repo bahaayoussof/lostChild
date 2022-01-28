@@ -137,9 +137,7 @@ export const Child = (props: RouteComponentProps<{ url: string }>) => {
                         </Col>
                         <Col xs={9}>
                           <div className="grid-card-header">
-                            <p className="child-name">
-                              <h6>{child.name}</h6>
-                            </p>
+                            <p className="child-name">{child.name}</p>
                             <p>
                               <label>Birthdate:</label>
                               {child.birthdate ? <TextFormat type="date" value={child.birthdate} format={APP_DATE_FORMAT} /> : null}

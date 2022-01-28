@@ -83,13 +83,13 @@ export const ChildDetail = (props: RouteComponentProps<{ id: string }>) => {
                 <p>
                   <label>Contact information:</label>
                   <b>{childEntity.contactInformation ? childEntity.contactInformation.email : ' '}</b>
-                  <p>
+                  <span>
                     <b>
                       {childEntity.contactInformation
                         ? ` ${childEntity.contactInformation.name}, [${childEntity.contactInformation.phoneNumber}]`
                         : ''}
                     </b>
-                  </p>
+                  </span>
                 </p>
                 <div className="child-last-seen-details">
                   <p>
